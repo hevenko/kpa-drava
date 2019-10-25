@@ -9,6 +9,6 @@ public class RestController {
 
     @GetMapping(path = "/dajIme")
     public String getName() {
-        return "NovoIme";
+        return "KommitNaGit";
     }
 }
