@@ -1,20 +1,28 @@
-package test.hevenko;
+package com.example.demo;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
 public class TestRow {
+
     @Id
-    @Column(name = "id")
+    @Column(name = "id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
+    @Column(name = "naziv")
+    String naziv;
+
+    TestRow() {}
+
+    TestRow(String naziv) {
+        this.naziv = naziv;
+    }
 
     TestRow(long id, String naziv) {
         this.id = id;
         this.naziv = naziv;
     }
-
-    @Column(name = "naziv")
-    String naziv;
 
     public long getId() {
         return id;
