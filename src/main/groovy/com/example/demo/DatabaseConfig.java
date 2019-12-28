@@ -13,13 +13,18 @@ public class DatabaseConfig {
 
     @Value("${spring.datasource.url}")
     private String dbUrl;
+    @Value("${spring.datasource.username}")
+    private String dbUsername;
+    @Value("${spring.datasource.password}")
+    private String dbPassword;
+
 
     @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(dbUrl);
-        config.setUsername("dccesjolgffqfu");
-        config.setPassword("921b6aec788ce0c3c7c6879b8952ffac9f33180bcae56a8a3f116db32412f691");
+        config.setUsername(dbUsername);
+        config.setPassword(dbPassword);
         return new HikariDataSource(config);
     }
 }
