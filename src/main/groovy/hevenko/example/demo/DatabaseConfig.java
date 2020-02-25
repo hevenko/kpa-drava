@@ -1,4 +1,4 @@
-package com.example.demo;
+package hevenko.example.demo;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;

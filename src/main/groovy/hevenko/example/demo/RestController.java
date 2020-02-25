@@ -1,11 +1,8 @@
-package com.example.demo;
+package hevenko.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,7 @@ public class RestController {
     private TestRepository testRepository;
 
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(path = "dajSve")
     public ResponseEntity dajSve() {
         List<TestRow> list = testRepository.findAll();
@@ -29,9 +27,10 @@ public class RestController {
     public ResponseEntity dodaj(@RequestParam(value="id") long id, @RequestParam(value="naziv") String naziv) {
         return ResponseEntity.ok(testRepository.save(new TestRow(id, naziv)));
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "dodajNaziv")
-    public ResponseEntity dodajNaziv(@RequestParam(value="naziv") String naziv) {
-        return ResponseEntity.ok(testRepository.save(new TestRow(naziv)));
+    public ResponseEntity dodajNaziv(@RequestBody TestRow testRow) {
+        return ResponseEntity.ok(testRepository.save(testRow));
     }
     @GetMapping(path = "/dajDBUrl")
     public String getName() {

@@ -1,4 +1,4 @@
-package com.example.demo;
+package hevenko.example.demo;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
